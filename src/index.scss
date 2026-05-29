@@ -10,7 +10,7 @@
   --color-accent: #FCB852;
   --color-text: #ffffff;
   --color-text-muted: #FFFFFF66;
-  --color-card-bg: #222222;
+  --color-card: #222222;
 }
 
 body {
@@ -35,3 +35,7 @@ img {
   display: block;
 }
 
+.container {
+  max-width: 1275px;
+  margin: 0 auto;
+}

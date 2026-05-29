@@ -1,0 +1,36 @@
+.slider-wrapper {
+  position: relative;
+  overflow: hidden;
+
+  .swiper-pagination {
+    position: relative;
+    margin-top: 20px;
+  }
+
+  .swiper-slide {
+    background: var(--color-card);
+    border-radius: 20px;
+    overflow: hidden;
+  }
+
+  .slider-btn-prev,
+  .slider-btn-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+  }
+
+  .slider-btn-prev {
+    left: 10px;
+  }
+
+  .slider-btn-next {
+    right: 10px;
+  }
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    display: none;
+  }
+}

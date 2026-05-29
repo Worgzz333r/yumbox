@@ -1,12 +1,13 @@
 import logo from '../../assets/yumbox-logo.svg'
 import styles from './Header.module.scss'
+import '../../index.scss'
 
 const cartItemsCount = 2;
 const cartItemsPrice = 2568;
 
 function Header() {
     return (
-        <div className={styles['container']}>
+        <div className={'container'}>
             <div className={styles['header-wrapper']}>
                 <div className={styles['logo-wrapper']}>
                     <img src={logo} alt="logo" />
