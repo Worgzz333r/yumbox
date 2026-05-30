@@ -1,6 +1,15 @@
 import styles from './ProductCard.module.scss'
+import { useState } from 'react'
+import check from '../../assets/check-circle.svg'
+
 
 function ProductCard({ product }) {
+  const [quantity, setQuantity] = useState(0)
+
+  function handleClick() {
+    setQuantity(quantity + 1)
+  }
+
   return (
     <div className={styles['product-card']}>
       <div className={styles['product-image']}>
@@ -12,9 +21,18 @@ function ProductCard({ product }) {
         <p className={styles['product-name']}>{product.name}</p>
         <p className={styles['product-weight']}>{product.weight}</p>
 
-        <div className={styles['product-card-bottom']}>
-          <p className={styles['product-price']}>{product.price} грн</p>
-          <button className={styles['product-cart-btn']}>Додати в кошик</button>
+        <div className={`${styles['product-card-bottom']} ${quantity > 0 ? styles['active'] : ''}`}>
+
+          {quantity === 0 ? (
+            <p className={styles['product-price']}>{product.price} грн</p>
+          ) : null}
+
+          <button className={styles['product-cart-btn']} onClick={handleClick}>
+            {quantity === 0
+              ? 'Додати в кошик'
+              : <><img src={check} alt="logo" /> В кошику <strong>{quantity} шт</strong> за <strong>{product.price * quantity} грн</strong></>
+            }
+          </button>
         </div>
 
       </div>
