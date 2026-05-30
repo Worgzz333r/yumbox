@@ -1,5 +1,20 @@
 .grid-title {
     margin: 3.5rem 0 4.5rem 0;
+    font-size: 1.2rem;
     text-align: center;
+}
 
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.8rem;
+    margin: 0 0 7rem;
+
+    @media (max-width: 768px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 480px) {
+        grid-template-columns: 1fr;
+    }
 }

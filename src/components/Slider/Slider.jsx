@@ -35,8 +35,8 @@ function Slider() {
                         nextEl: '.slider-btn-next',
                     }}
 
+                    loop={true}
                     modules={[Navigation, Pagination]}
-
                     pagination={{ clickable: true }}
                     slidesPerView={1}>
 

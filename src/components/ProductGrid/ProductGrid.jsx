@@ -2,14 +2,13 @@ import ProductCard from '../ProductCard/ProductCard'
 import products from '../../data/products'
 import styles from './ProductGrid.module.scss'
 
-
 function ProductGrid() {
     return (
-        <div className={'container'}>
-            <div className="products-grid">
-                <div className={styles['grid-title']}>
-                    Найчастіше замовляють
-                </div>
+        <div className="container">
+            <div className={styles['grid-title']}>
+                Найчастіше замовляють
+            </div>
+            <div className={styles['products-grid']}>
                 {products.map(product => (
                     <ProductCard key={product.id} product={product} />
                 ))}
@@ -17,4 +16,5 @@ function ProductGrid() {
         </div>
     )
 }
+
 export default ProductGrid;

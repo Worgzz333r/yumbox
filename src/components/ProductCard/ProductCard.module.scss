@@ -1,0 +1,31 @@
+.product-card {
+    width: 18.5rem;
+    text-align: center;
+
+    .product-image {
+        width: 100%;
+        height: auto;
+    }
+
+    .product-info-wrapper {
+        padding: 1rem 0 0 0;
+
+        .product-name {
+            width: min-content;
+            margin: 0 auto 1.2rem;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .product-weight {
+            font-size: 0.8rem;
+            opacity: 0.4;
+        }
+
+        .product-price {
+            margin: 2.5rem 0 1rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+    }
+}
