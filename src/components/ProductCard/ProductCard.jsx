@@ -8,9 +8,15 @@ function ProductCard({ product }) {
       </div>
 
       <div className={styles['product-info-wrapper']}>
+
         <p className={styles['product-name']}>{product.name}</p>
         <p className={styles['product-weight']}>{product.weight}</p>
-        <p className={styles['product-price']}>{product.price} грн</p>
+
+        <div className={styles['product-card-bottom']}>
+          <p className={styles['product-price']}>{product.price} грн</p>
+          <button className={styles['product-cart-btn']}>Додати в кошик</button>
+        </div>
+
       </div>
     </div>
   )

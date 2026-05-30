@@ -22,10 +22,38 @@
             opacity: 0.4;
         }
 
-        .product-price {
-            margin: 2.5rem 0 1rem;
-            font-size: 1.1rem;
-            font-weight: 600;
+        .product-card-bottom {
+
+            .product-price {
+                margin: 2.5rem 0 1.5rem;
+                font-size: 1.1rem;
+                font-weight: 600;
+            }
+
+            .product-cart-btn {
+                display: none;
+
+                background: none;
+                border: 2px solid var(--color-text);
+                border-radius: 100px;
+                color: var(--color-text);
+                font-size: 1rem;
+                margin: 1rem 0 0;
+                padding: 1.5rem 0;
+                width: 100%;
+            }
+
+            &:hover {
+                .product-price {
+                    display: none;
+                }
+
+                .product-cart-btn {
+                    display: block;
+                }
+            }
+
         }
+
     }
 }
