@@ -48,3 +48,34 @@
     }
 
 }
+
+.header-mobile {
+    margin: 1.2rem 0 0 0;
+    display: none;
+
+    .burger {
+        display: flex;
+        gap: 1rem;
+
+        width: 5rem;
+
+        font-weight: bold;
+        font-size: 1rem;
+        color: var(--color-text);
+
+    }
+}
+
+@media (max-width: 816px) {
+    .header-wrapper {
+        display: none;
+
+
+    }
+
+    .header-mobile {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
