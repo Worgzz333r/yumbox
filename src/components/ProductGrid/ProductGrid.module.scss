@@ -6,7 +6,7 @@
 
 .products-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
     gap: 1.8rem;
     margin: 0 0 7rem;
 
@@ -14,7 +14,7 @@
         grid-template-columns: repeat(2, 1fr);
     }
 
-    @media (max-width: 480px) {
+    @media (max-width: 600px) {
         grid-template-columns: 1fr;
     }
 }
