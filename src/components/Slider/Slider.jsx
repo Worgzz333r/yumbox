@@ -1,3 +1,4 @@
+import { useRef } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Pagination } from 'swiper/modules'
 import 'swiper/css'
@@ -11,6 +12,7 @@ import set from '../../assets/set.png'
 import patch from '../../assets/patch.png'
 import vector from '../../assets/vector.png'
 import text from '../../assets/text.png'
+import text_mobile from '../../assets/text-mobile.png'
 
 const slides = [
     { title: 'сет 21', price: '934 грн' },
@@ -19,6 +21,8 @@ const slides = [
 ]
 
 function Slider() {
+    const swiperRef = useRef(null)
+
     return (
         <div className={'container'}>
             <div className={'slider-wrapper'}>
@@ -30,14 +34,17 @@ function Slider() {
                 </button>
 
                 <Swiper
+                    onSwiper={(swiper) => { swiperRef.current = swiper }}
                     navigation={{
                         prevEl: '.slider-btn-prev',
                         nextEl: '.slider-btn-next',
                     }}
-
                     loop={true}
                     modules={[Navigation, Pagination]}
-                    pagination={{ clickable: true }}
+                    pagination={{
+                        clickable: true,
+                        el: window.innerWidth <= 768 ? '.custom-pagination' : '.desktop-pagination'
+                    }}
                     slidesPerView={1}>
 
                     {slides.map((slide, index) => (
@@ -48,7 +55,8 @@ function Slider() {
                                 <img className="slide-vector" src={vector} alt="vector image" />
                                 <img className="slide-text" src={text} alt="text image" />
                             </div>
-                            <div className="slide_info">
+                            <img className="slide-text-mobile" src={text_mobile} alt="text mobile image" />
+                            <div className="slide-info">
                                 <span>{slide.title}</span>
                                 <span className="slide-price">{slide.price}</span>
                             </div>
@@ -56,6 +64,18 @@ function Slider() {
                     ))}
 
                 </Swiper>
+
+                <div className="desktop-pagination"></div>  {/* десктоп */}
+
+                <div className="slider-controls">
+                    <button className="slider-btn-prev-mobile" onClick={() => swiperRef.current?.slidePrev()}>
+                        <img src={arrowLeft} alt="prev" />
+                    </button>
+                    <div className="custom-pagination"></div>  {/* мобіл */}
+                    <button className="slider-btn-next-mobile" onClick={() => swiperRef.current?.slideNext()}>
+                        <img src={arrowRight} alt="next" />
+                    </button>
+                </div>
             </div>
         </div>
     )

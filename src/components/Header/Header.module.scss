@@ -79,3 +79,17 @@
         align-items: center;
     }
 }
+
+@media(max-width: 580px) {
+    .logo-wrapper {
+        img {
+            height: 48px;
+        }
+    }
+
+    .header-mobile {
+        .burger {
+            font-size: 0.8rem;
+        }
+    }
+}
