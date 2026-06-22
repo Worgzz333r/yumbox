@@ -3,11 +3,12 @@ import { useState } from 'react'
 import check from '../../assets/check-circle.svg'
 
 
-function ProductCard({ product }) {
+function ProductCard({ product, addToCart }) {
   const [quantity, setQuantity] = useState(0)
 
   function handleClick() {
     setQuantity(quantity + 1)
+    addToCart(product)
   }
 
   return (

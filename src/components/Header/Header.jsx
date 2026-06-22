@@ -5,10 +5,7 @@ import close from '../../assets/close.svg'
 import styles from './Header.module.scss'
 import '../../index.scss'
 
-const cartItemsCount = 2;
-const cartItemsPrice = 2568;
-
-function Header() {
+function Header({ cartCount, cartTotal }){
 
     const [isMenuOpen, setIsMenuOpen] = useState(false)
 
@@ -30,10 +27,10 @@ function Header() {
 
                     <div className={styles['cart-wrapper']}>
                         <div className={styles['cart-items-count']}>
-                            {cartItemsCount}
+                            {cartCount}
                         </div>
                         <div className={styles['cart-items-price']}>
-                            {cartItemsPrice.toLocaleString('uk-UA')} грн
+                            {cartTotal.toLocaleString('uk-UA')} грн
                         </div>
                     </div>
                 </div>
@@ -44,7 +41,7 @@ function Header() {
                         <img src={logo} alt="logo" />
                     </div>
                     <button className={styles['burger']} onClick={() => setIsMenuOpen(!isMenuOpen)}>
-                        Меню {isMenuOpen ? <><img src={close}/></> : <><img src={burger}/></>}
+                        Меню {isMenuOpen ? <><img src={close} /></> : <><img src={burger} /></>}
                     </button>
                 </div>
             </div>
@@ -52,8 +49,8 @@ function Header() {
             {isMenuOpen && (
                 <div className={styles['mobile-menu']}>
                     <div className={styles['cart-wrapper']}>
-                        <div className={styles['cart-items-count']}>{cartItemsCount}</div>
-                        <div className={styles['cart-items-price']}>{cartItemsPrice.toLocaleString('uk-UA')} грн</div>
+                        <div className={styles['cart-items-count']}>{cartCount}</div>
+                        <div className={styles['cart-items-price']}>{cartTotal.toLocaleString('uk-UA')} грн</div>
                     </div>
                     <nav>
                         <a href="#">Каталог</a>
@@ -64,6 +61,10 @@ function Header() {
                 </div>
             )}
 
+            <div className={styles['cart-float']}>
+                <div className={styles['cart-items-count']}>{cartCount}</div>
+                <div className={styles['cart-items-price']}>{cartTotal.toLocaleString('uk-UA')} грн</div>
+            </div>
         </header>
     )
 }
