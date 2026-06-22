@@ -13,17 +13,6 @@ function Header({ cartCount, cartTotal }) {
 
     const [isMenuOpen, setIsMenuOpen] = useState(false)
 
-    useEffect(() => {
-        if (isMenuOpen) {
-            document.body.style.overflow = 'hidden'
-        } else {
-            document.body.style.overflow = ''
-        }
-        return () => {
-            document.body.style.overflow = ''
-        }
-    }, [isMenuOpen])
-
     return (
         <header>
             <div className={'container'}>

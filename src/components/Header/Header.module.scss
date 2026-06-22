@@ -1,3 +1,12 @@
+header{
+    @media (max-width: 816px) {
+        position: sticky;
+        top: 0;
+        z-index: 101;
+        background: var(--color-bg);
+    }
+}
+
 .header-wrapper {
     margin: 2rem 0 1.2rem 0;
     display: flex;
@@ -5,12 +14,7 @@
     align-items: center;
     height: max-content;
 
-    @media (max-width: 816px) {
-        position: sticky;
-        top: 0;
-        z-index: 101;
-        background: var(--color-bg);
-    }
+    
 
     .logo-wrapper {
         height: 100%;
