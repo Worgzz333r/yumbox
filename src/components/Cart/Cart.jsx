@@ -1,5 +1,5 @@
 import styles from './Cart.module.scss'
-import trash from '../../assets/trash.svg' // або яка іконка є
+import trash from '../../assets/trash.svg'
 
 function Cart({ cart, isCartOpen, setIsCartOpen, removeFromCart, updateQuantity, cartTotal, cartTotalWithDiscount, discount, handleCheckout }) {
     return (
