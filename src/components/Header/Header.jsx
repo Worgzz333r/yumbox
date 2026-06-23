@@ -8,8 +8,7 @@ import ig from '../../assets/instagram.svg'
 import f from '../../assets/facebook.svg'
 import { useState, useEffect } from 'react'
 
-
-function Header({ cartCount, cartTotal }) {
+function Header({ cartCount, cartTotal, cart, isCartOpen, setIsCartOpen, removeFromCart, updateQuantity }) {
 
     const [isMenuOpen, setIsMenuOpen] = useState(false)
 
@@ -29,7 +28,7 @@ function Header({ cartCount, cartTotal }) {
                         <a href="#">Контакти</a>
                     </nav>
 
-                    <div className={styles['cart-wrapper']}>
+                    <div className={styles['cart-wrapper']} onClick={() => setIsCartOpen(true)}>
                         <div className={styles['cart-items-count']}>
                             {cartCount}
                         </div>
@@ -88,6 +87,7 @@ function Header({ cartCount, cartTotal }) {
                 <div className={styles['cart-items-count']}>{cartCount}</div>
                 <div className={styles['cart-items-price']}>{cartTotal.toLocaleString('uk-UA')} грн</div>
             </div>
+            
         </header>
     )
 }
