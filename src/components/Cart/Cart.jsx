@@ -1,7 +1,22 @@
+import { useState, useEffect } from 'react'
 import styles from './Cart.module.scss'
 import trash from '../../assets/trash.svg'
 
-function Cart({ cart, isCartOpen, setIsCartOpen, removeFromCart, updateQuantity, cartTotal, cartTotalWithDiscount, discount, handleCheckout }) {
+function Cart({ cart, isCartOpen, setIsCartOpen, removeFromCart, updateQuantity, cartTotal, cartTotalWithDiscount, discount, handleCheckout}) {
+
+    const [showDiscount, setShowDiscount] = useState(false)
+    const [renderDiscount, setRenderDiscount] = useState(false)
+
+    useEffect(() => {
+        if (discount < 1) {
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => setShowDiscount(true))
+            })
+        } else {
+            setShowDiscount(false)
+        }
+    }, [discount])
+
     return (
 
         <>
@@ -63,9 +78,11 @@ function Cart({ cart, isCartOpen, setIsCartOpen, removeFromCart, updateQuantity,
                         <span>50 ₴</span>
                     </div>
 
-                    <div className={`${styles['cart-discount']} ${discount < 1 ? styles['visible'] : ''}`}>
-                        <span>Знижка 10%</span>
-                        <span>− {Math.round(cartTotal * 0.1)} ₴</span>
+                    <div className={`${styles['cart-discount']} ${discount < 1 && showDiscount ? styles['visible'] : ''}`}>
+                        <div className={styles['cart-discount-inner']}>
+                            <span>Знижка 10%</span>
+                            <span>− {Math.round(cartTotal * 0.1)} ₴</span>
+                        </div>
                     </div>
 
                     <button className={styles['cart-checkout']} onClick={handleCheckout}>

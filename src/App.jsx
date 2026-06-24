@@ -48,6 +48,13 @@ function App() {
     }))
     console.log('Замовлення:', order)
     console.log('Сума:', cartTotalWithDiscount + 50)
+    setCart([])
+    setIsCartOpen(false)
+  }
+
+  function clearCart() {
+    setCart([])
+    setIsCartOpen(false)
   }
 
   return (

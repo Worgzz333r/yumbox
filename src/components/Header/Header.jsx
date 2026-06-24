@@ -27,7 +27,7 @@ function Header({ cartCount, cartTotal, cart, isCartOpen, setIsCartOpen, removeF
                         <a href="#">Контакти</a>
                     </nav>
 
-                    <div className={styles['cart-wrapper']} onClick={() => setIsCartOpen(true)}>
+                    <div className={styles['cart-wrapper']} onClick={() => setIsCartOpen(prev => !prev)}>
                         <div className={styles['cart-items-count']}>
                             {cartCount}
                         </div>
@@ -59,7 +59,7 @@ function Header({ cartCount, cartTotal, cart, isCartOpen, setIsCartOpen, removeF
             {/* MOBILE MENU */}
 
             <div className={`${styles['mobile-menu']} ${isMenuOpen ? styles['menu-open'] : ''}`}>
-                <div className={styles['cart-wrapper']} onClick={() => setIsCartOpen(true)}>
+                <div className={styles['cart-wrapper']} onClick={() => setIsCartOpen(prev => !prev)}>
                     <div className={styles['cart-items-count']}>{cartCount}</div>
                     <div className={styles['cart-items-price']}>{cartTotal.toLocaleString('uk-UA')} грн</div>
                 </div>
@@ -82,11 +82,11 @@ function Header({ cartCount, cartTotal, cart, isCartOpen, setIsCartOpen, removeF
             </div>
 
 
-            <div className={styles['cart-float']} onClick={() => setIsCartOpen(true)}>
+            <div className={styles['cart-float']} onClick={() => setIsCartOpen(prev => !prev)}>
                 <div className={styles['cart-items-count']}>{cartCount}</div>
                 <div className={styles['cart-items-price']}>{cartTotal.toLocaleString('uk-UA')} грн</div>
             </div>
-            
+
         </header>
     )
 }

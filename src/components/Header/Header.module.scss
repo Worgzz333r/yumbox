@@ -1,7 +1,7 @@
 header {
     position: sticky;
     top: 0;
-     z-index: 201;
+    z-index: 201;
     background: var(--color-bg);
 
     @media (max-width: 816px) {
@@ -32,7 +32,13 @@ header {
     .header-nav {
         a {
             padding: 1rem;
+            transition: opacity 0.2s ease, transform 0.3s ease;
+
+            &:hover {
+                text-decoration: underline;
+            }
         }
+
     }
 }
 
