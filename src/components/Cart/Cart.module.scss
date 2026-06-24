@@ -29,13 +29,18 @@
     }
 
     button {
-        font-size: 1.2rem;
+        width: 1.1rem;
+        height: 1.1rem;
         color: var(--color-text);
-        opacity: 0.6;
+        transition: opacity 0.2s ease, transform 0.3s ease;
         cursor: pointer;
 
         &:hover {
-            opacity: 1;
+            transform: rotate(-20deg);
+        }
+
+        &:active {
+            transform: rotate(-180deg);
         }
     }
 }
@@ -189,18 +194,33 @@
 }
 
 .cart-overlay {
-    display: none;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: #FCB8521C;
-    backdrop-filter: blur(4px);
     z-index: 199;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: #FCB8521C;
+        backdrop-filter: blur(4px);
+        opacity: 0;
+        transition: opacity 0.3s ease 0.1s; // додав delay
+    }
 
     &.open {
-        display: block;
+        opacity: 1;
+        visibility: visible;
+
+        &::before {
+            opacity: 1;
+        }
     }
 }
 

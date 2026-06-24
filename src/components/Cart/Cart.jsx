@@ -15,37 +15,46 @@ function Cart({ cart, isCartOpen, setIsCartOpen, removeFromCart, updateQuantity,
             <div className={`${styles['cart-sidebar']} ${isCartOpen ? styles['open'] : ''}`}>
                 <div className={styles['cart-header']}>
                     <h2>Корзина</h2>
-                    <button onClick={() => setIsCartOpen(false)}>✕</button>
+                    <button onClick={() => setIsCartOpen(false)} className={styles['cart-close']}>
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="-1" y="7" width="20" height="4" fill="currentColor" transform="rotate(45 9 9)" />
+                            <rect x="-1" y="7" width="20" height="4" fill="currentColor" transform="rotate(-45 9 9)" />
+                        </svg>
+                    </button>
                 </div>
 
                 <div className={styles['cart-items']}>
-                    {cart.map(item => (
-                        <div key={item.id} className={styles['cart-item']}>
-                            <div className={styles['cart-item-top']}>
-                                <img src={item.image} alt={item.name} />
-                                <div className={styles['cart-item-info']}>
-                                    <p>{item.name}</p>
-                                    <p>{item.weight}</p>
+                    {cart.length === 0 ? (
+                        <p className={styles['cart-empty']}>Кошик порожній</p>
+                    ) : (
+                        cart.map(item => (
+                            <div key={item.id} className={styles['cart-item']}>
+                                <div className={styles['cart-item-top']}>
+                                    <img src={item.image} alt={item.name} />
+                                    <div className={styles['cart-item-info']}>
+                                        <p>{item.name}</p>
+                                        <p>{item.weight}</p>
+                                    </div>
+                                    <div className={styles['cart-item-right']}>
+                                        <button onClick={() => removeFromCart(item.id)}>
+                                            <img src={trash} alt="remove" />
+                                        </button>
+                                    </div>
                                 </div>
-                                <div className={styles['cart-item-right']}>
-                                    <button onClick={() => removeFromCart(item.id)}>
-                                        <img src={trash} alt="remove" />
-                                    </button>
-                                </div>
-                            </div>
 
-                            <div className={styles['cart-item-bottom-border']}>
-                                <div className={styles['cart-item-bottom']}>
-                                    <p className={styles['cart-item-price']}>{item.price * item.quantity} ₴</p>
-                                    <div className={styles['quantity-controls']}>
-                                        <button onClick={() => updateQuantity(item.id, -1)}>−</button>
-                                        <span>{item.quantity}</span>
-                                        <button onClick={() => updateQuantity(item.id, 1)}>+</button>
+                                <div className={styles['cart-item-bottom-border']}>
+                                    <div className={styles['cart-item-bottom']}>
+                                        <p className={styles['cart-item-price']}>{item.price * item.quantity} ₴</p>
+                                        <div className={styles['quantity-controls']}>
+                                            <button onClick={() => updateQuantity(item.id, -1)}>−</button>
+                                            <span>{item.quantity}</span>
+                                            <button onClick={() => updateQuantity(item.id, 1)}>+</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    ))}
+                        ))
+                    )}
                 </div>
 
                 <div className={styles['cart-footer']}>

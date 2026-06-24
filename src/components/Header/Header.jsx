@@ -1,6 +1,5 @@
 import logo from '../../assets/yumbox-logo.svg'
 import burger from '../../assets/burger.svg'
-import close from '../../assets/close.svg'
 import styles from './Header.module.scss'
 import '../../index.scss'
 import lin from '../../assets/linkedin.svg'
