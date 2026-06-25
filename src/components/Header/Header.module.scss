@@ -32,13 +32,24 @@ header {
     .header-nav {
         a {
             padding: 1rem;
-            transition: opacity 0.2s ease, transform 0.3s ease;
+            position: relative;
 
-            &:hover {
-                text-decoration: underline;
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: 1rem;
+                left: 1rem;
+                right: 1rem;
+                height: 1px;
+                background: var(--color-text);
+                transform: scaleX(0);
+                transition: transform 0.2s ease;
+            }
+
+            &:hover::after {
+                transform: scaleX(1);
             }
         }
-
     }
 }
 
@@ -276,9 +287,18 @@ header {
         bottom: 4rem;
         right: 1.5rem;
         z-index: 99;
+        transition: background-color 0.3s ease, color 0.3s ease;
 
+        &:hover {
+            background: var(--color-accent);
+            color: var(--color-bg);
+            border-color: var(--color-accent);
 
-
+            .cart-items-count {
+                background-color: var(--color-bg);
+                color: var(--color-accent);
+            }
+        }
 
 
         .cart-items-count {
@@ -289,10 +309,12 @@ header {
             height: 20px;
             background-color: var(--color-cart-num);
             border-radius: 100px;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         .cart-items-price {
             margin: 0 1rem;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
     }
 }
