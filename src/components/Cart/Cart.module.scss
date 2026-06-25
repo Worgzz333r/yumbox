@@ -299,12 +299,12 @@
 
 @media (max-width: 816px) {
     .cart-sidebar {
-        top: 5rem;
-        height: calc(100vh - 5rem);
+        top: 0rem;
+        height: 100vh;
     }
 
     .cart-overlay {
-        top: 5rem; // та сама висота що і cart-sidebar
+        top: 5rem;
         height: calc(100vh - 5rem);
     }
 }

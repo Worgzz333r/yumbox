@@ -53,20 +53,35 @@ header {
     font-size: 0.8rem;
     font-weight: bold;
     width: fit-content;
+    transition: background-color 0.3s ease, color 0.3s ease;
+
+    &:hover {
+        background: var(--color-accent);
+        color: var(--color-bg);
+        border-color: var(--color-accent);
+
+        .cart-items-count {
+            background-color: var(--color-bg);
+            color: var(--color-accent);
+        }
+    }
 
     .cart-items-count {
         display: flex;
         justify-content: center;
         align-items: center;
-        padding: 0 0.8px 0 0;
+        padding: 0 0.05rem 0 0;
         width: 19px;
         height: 19px;
         background-color: var(--color-cart-num);
         border-radius: 100px;
+
+        transition: background-color 0.3s ease, color 0.3s ease;
     }
 
     .cart-items-price {
         margin: 0 1rem;
+        transition: background-color 0.3s ease, color 0.3s ease;
     }
 }
 
@@ -261,6 +276,10 @@ header {
         bottom: 4rem;
         right: 1.5rem;
         z-index: 99;
+
+
+
+
 
         .cart-items-count {
             display: flex;
