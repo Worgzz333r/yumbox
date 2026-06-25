@@ -55,13 +55,24 @@
 
     .cart-empty {
         text-align: center;
-        opacity: 0.4;
         font-size: 1rem;
         flex: 1;
         display: flex;
         align-items: center;
         justify-content: center;
         padding-bottom: 60%;
+
+        animation: fadeIn 0.3s ease 0.3s both;
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 0.4;
+            }
+        }
     }
 }
 
@@ -136,6 +147,16 @@
     background: var(--color-card);
     border-radius: 32px 32px 0 0;
     padding: 1.7rem;
+
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(10px);
 }
 
 .cart-delivery {
@@ -187,6 +208,15 @@
     display: flex;
     flex-direction: column;
     gap: 0;
+
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.removing {
+    opacity: 0;
+    transform: translateX(30px);
 }
 
 .cart-item-top {

@@ -80,7 +80,7 @@ function App() {
         handleCheckout={handleCheckout}
       />
       <Slider />
-      <ProdGrid addToCart={addToCart} />
+      <ProdGrid addToCart={addToCart} cart={cart} />
     </div>
   )
 }
