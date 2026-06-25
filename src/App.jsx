@@ -65,6 +65,24 @@ function App() {
     setIsCartOpen(false)
   }
 
+  const [showToast, setShowToast] = useState(false)
+
+  function handleCheckout() {
+    const order = cart.map(item => ({
+      id: item.id,
+      name: item.name,
+      price: item.price,
+      quantity: item.quantity,
+      total: item.price * item.quantity
+    }))
+    console.log('Замовлення:', order)
+    console.log('Сума:', cartTotalWithDiscount + 50)
+    setCart([])
+    setIsCartOpen(false)
+    setShowToast(true)
+    setTimeout(() => setShowToast(false), 3000)
+  }
+
   return (
     <div>
       <Header
@@ -87,6 +105,9 @@ function App() {
         discount={discount}
         handleCheckout={handleCheckout}
       />
+      <div className={`toast ${showToast ? 'toast-visible' : ''}`}>
+        Замовлення прийнято!
+      </div>
       <Slider />
       <ProdGrid addToCart={addToCart} cart={cart} />
     </div>

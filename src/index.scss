@@ -58,3 +58,25 @@ img {
   padding: 0 20px;
   margin: 0 auto;
 }
+
+.toast {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: var(--color-card);
+    color: var(--color-text);
+    padding: 1rem 2rem;
+    border-radius: 100px;
+    font-weight: 600;
+    font-size: 1rem;
+    z-index: 300;
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    white-space: nowrap;
+}
+
+.toast-visible {
+    transform: translateX(-50%) translateY(0);
+    opacity: 0.9;
+}
