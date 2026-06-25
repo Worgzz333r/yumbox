@@ -207,6 +207,14 @@
     }
 }
 
+.cart-item-bottom {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.8rem 1rem;
+    flex-direction: row;
+    border-top: 1px solid #000;
+}
+
 .cart-item {
     background: var(--color-card);
     border-radius: 16px;
@@ -241,13 +249,6 @@
         width: 18px;
         height: 20px;
     }
-}
-
-.cart-item-bottom {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-top: 1px solid #000;
 }
 
 .cart-overlay {
