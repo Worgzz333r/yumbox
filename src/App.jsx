@@ -1,12 +1,20 @@
-import { useState } from 'react'
 import Header from './components/Header/Header'
 import Slider from './components/Slider/Slider'
 import ProdGrid from './components/ProductGrid/ProductGrid'
 import Cart from './components/Cart/Cart'
+import { useState, useEffect } from 'react'
 
 function App() {
-  const [cart, setCart] = useState([])
   const [isCartOpen, setIsCartOpen] = useState(false)
+
+  const [cart, setCart] = useState(() => {
+    const saved = localStorage.getItem('cart')
+    return saved ? JSON.parse(saved) : []
+  })
+
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart))
+  }, [cart])
 
   function addToCart(product) {
     setCart(prev => {
