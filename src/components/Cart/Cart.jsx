@@ -6,15 +6,18 @@ function Cart({ cart, isCartOpen, setIsCartOpen, removeFromCart, updateQuantity,
 
     const [showDiscount, setShowDiscount] = useState(false)
     const [footerVisible, setFooterVisible] = useState(false)
+    const [removingIds, setRemovingIds] = useState([])
 
+    // Показуємо/ховаємо футер з затримкою для анімації
     useEffect(() => {
         if (cart.length > 0) {
             setFooterVisible(true)
         } else {
-            setTimeout(() => setFooterVisible(false), 300) // чекаємо поки анімація завершиться
+            setTimeout(() => setFooterVisible(false), 300)
         }
     }, [cart.length])
 
+    // Показуємо знижку з затримкою для плавної анімації
     useEffect(() => {
         if (discount < 1) {
             requestAnimationFrame(() => {
@@ -25,8 +28,7 @@ function Cart({ cart, isCartOpen, setIsCartOpen, removeFromCart, updateQuantity,
         }
     }, [discount])
 
-    const [removingIds, setRemovingIds] = useState([])
-
+    // Анімація видалення товару перед реальним видаленням
     function handleRemove(id) {
         setRemovingIds(prev => [...prev, id])
         setTimeout(() => {
@@ -36,14 +38,11 @@ function Cart({ cart, isCartOpen, setIsCartOpen, removeFromCart, updateQuantity,
     }
 
     return (
-
         <>
             <div
                 className={`${styles['cart-overlay']} ${isCartOpen ? styles['open'] : ''}`}
                 onClick={() => setIsCartOpen(false)}
             />
-
-
 
             <div className={`${styles['cart-sidebar']} ${isCartOpen ? styles['open'] : ''}`}>
                 <div className={styles['cart-header']}>
@@ -61,7 +60,10 @@ function Cart({ cart, isCartOpen, setIsCartOpen, removeFromCart, updateQuantity,
                         <p className={styles['cart-empty']}>Кошик порожній</p>
                     ) : (
                         cart.map(item => (
-                            <div key={item.id} className={`${styles['cart-item']} ${removingIds.includes(item.id) ? styles['removing'] : ''}`}>
+                            <div
+                                key={item.id}
+                                className={`${styles['cart-item']} ${removingIds.includes(item.id) ? styles['removing'] : ''}`}
+                            >
                                 <div className={styles['cart-item-top']}>
                                     <img src={item.image} alt={item.name} />
                                     <div className={styles['cart-item-info']}>
@@ -75,20 +77,12 @@ function Cart({ cart, isCartOpen, setIsCartOpen, removeFromCart, updateQuantity,
                                     </div>
                                 </div>
 
-                                <div className={styles['cart-item-bottom-border']}>
-                                    <div className={styles['cart-item-bottom']}>
-                                        <p className={styles['cart-item-price']}>{item.price * item.quantity} ₴</p>
-                                        <div className={styles['quantity-controls']}>
-                                            <button onClick={() => {
-                                                if (item.quantity === 1) {
-                                                    handleRemove(item.id)
-                                                } else {
-                                                    updateQuantity(item.id, -1)
-                                                }
-                                            }}>−</button>
-                                            <span>{item.quantity}</span>
-                                            <button onClick={() => updateQuantity(item.id, 1)}>+</button>
-                                        </div>
+                                <div className={styles['cart-item-bottom']}>
+                                    <p className={styles['cart-item-price']}>{item.price * item.quantity} ₴</p>
+                                    <div className={styles['quantity-controls']}>
+                                        <button onClick={() => item.quantity === 1 ? handleRemove(item.id) : updateQuantity(item.id, -1)}>−</button>
+                                        <span>{item.quantity}</span>
+                                        <button onClick={() => updateQuantity(item.id, 1)}>+</button>
                                     </div>
                                 </div>
                             </div>
